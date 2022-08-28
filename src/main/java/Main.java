@@ -57,19 +57,7 @@ public class Main {
         try (
                 BufferedReader reader = new BufferedReader(new FileReader(fileName))
         ) {
-
-            ColumnPositionMappingStrategy<Employee> strategy = new ColumnPositionMappingStrategy<>();
-            strategy.setType(Employee.class);
-            strategy.setColumnMapping(columnMapping);
-
-            CsvToBean<Employee> csvToBean = new CsvToBeanBuilder(reader)
-                    .withMappingStrategy(strategy)
-                    .withSkipLines(1)
-                    .withIgnoreLeadingWhiteSpace(true)
-                    .build();
-
-            return csvToBean.parse();
-
+            return new CsvToBeanBuilder<Employee>(reader).withType(Employee.class).build().parse();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

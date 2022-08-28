@@ -8,15 +8,15 @@ import java.lang.reflect.Type;
 
 public class Employee {
 
-
+    @CsvBindByName
     public long id;
-    @SerializedName("Имя")
+    @CsvBindByName
     public String firstName;
-    @SerializedName("Фамилия")
+    @CsvBindByName
     public String lastName;
-    @SerializedName("Страна")
+    @CsvBindByName
     public String country;
-    @SerializedName("Возраст")
+    @CsvBindByName
     public int age;
 //для парсинга из CSV
     public Employee() {
